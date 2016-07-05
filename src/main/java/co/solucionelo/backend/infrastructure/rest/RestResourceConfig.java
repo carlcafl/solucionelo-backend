@@ -10,7 +10,7 @@ public class RestResourceConfig extends ResourceConfig {
 
 	public RestResourceConfig()
 	{
-		packages("co.solucionelo.services,co.solucionelo.services.util");
+		packages("co.solucionelo.backend.services,co.solucionelo.backend.services.util");
 		register(JacksonFeature.class);
 		register(org.glassfish.jersey.server.mvc.jsp.JspMvcFeature.class);
 	}
