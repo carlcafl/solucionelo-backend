@@ -12,6 +12,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import co.solucionelo.backend.dataAccess.UsersDataAccess;
 import co.solucionelo.backend.model.UserInfo;
 
 @Path("/users")
@@ -32,7 +33,7 @@ public class RESTUsers extends RESTService {
 
 				
 		//TODO DataAccess
-		UserInfo user = new UserInfo();
+		/*UserInfo user = new UserInfo();
 		user.setFirstName("Camilo");
 		user.setLastName("Aristizabal");
 		user.setIdNumber("123456789");
@@ -49,9 +50,9 @@ public class RESTUsers extends RESTService {
 		user2.setEmail("cacarmona@sura.com.co");
 		user2.setMobileNumber("3006168980");
 		user2.setPhoneNumber("2703374");
-		list.add(user2);
+		list.add(user2);*/
 		
-		//list = PlatformsDataAccess.listAll();
+		list = UsersDataAccess.listAll();
 		processResponse();
 		return list;
 	}
