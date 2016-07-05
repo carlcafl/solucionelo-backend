@@ -1,10 +1,12 @@
 package co.solucionelo.backend.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class UserInfo {
 
+	private int id = 0;
 	private String idType = null;
 	private String idNumber = null;
 	private String firstName = null;
@@ -14,6 +16,8 @@ public class UserInfo {
 	private String email = null;
 	private String city = null;
 	private List<Service> offeredServices = new ArrayList<Service>();
+	private Date registeredDate = null;
+	
 	public String getIdType() {
 		return idType;
 	}
@@ -67,5 +71,17 @@ public class UserInfo {
 	}
 	public void setOfferedServices(List<Service> offeredServices) {
 		this.offeredServices = offeredServices;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public Date getRegisteredDate() {
+		return registeredDate;
+	}
+	public void setRegisteredDate(Date registeredDate) {
+		this.registeredDate = registeredDate;
 	}
 }
