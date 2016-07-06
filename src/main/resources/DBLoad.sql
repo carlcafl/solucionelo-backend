@@ -1,8 +1,8 @@
 insert into tblServices(name) values
-('PLOMERÍA'),
-('CARPINTERÍA'),
+('PLOMERIA'),
+('CARPINTERIA'),
 ('PINTURA'),
-('JARDINERÍA'),
+('JARDINERIA'),
 ('OBRA CIVIL'),
 ('DESARROLLO DE SOFTWARE')
 ;

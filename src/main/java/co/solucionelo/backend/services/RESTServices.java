@@ -31,9 +31,6 @@ public class RESTServices extends RESTService {
 	@Produces(MediaType.APPLICATION_JSON) 
 	public List<Service> listServices() throws URISyntaxException, SQLException {
 		List<Service> list = new ArrayList<Service>();
-
-				
-		//TODO DataAccess
 		list = ServicesDataAccess.listAll();
 		processResponse();
 		return list;
@@ -44,7 +41,6 @@ public class RESTServices extends RESTService {
 	@Produces(MediaType.APPLICATION_JSON ) 
 	public Service getService(@PathParam("id") int id) throws URISyntaxException, SQLException {
 		Service service = new Service();
-		
 		service = ServicesDataAccess.getById(id);
 		
 		processResponse();

@@ -17,6 +17,7 @@ public class UserInfo {
 	private String city = null;
 	private List<Service> offeredServices = new ArrayList<Service>();
 	private Date registeredDate = null;
+	private String ipAddress = null;
 	
 	public String getIdType() {
 		return idType;
@@ -83,5 +84,11 @@ public class UserInfo {
 	}
 	public void setRegisteredDate(Date registeredDate) {
 		this.registeredDate = registeredDate;
+	}
+	public String getIpAddress() {
+		return ipAddress;
+	}
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
 }
