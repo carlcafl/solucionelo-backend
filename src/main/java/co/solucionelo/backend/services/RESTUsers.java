@@ -43,6 +43,9 @@ public class RESTUsers extends RESTService {
 	@Produces(MediaType.TEXT_HTML)
 	public Response addNew(UserInfo user) throws URISyntaxException, SQLException {	
 		processResponse();
+		if (user.getIpAddress() == null || "".equals(user.getIpAddress())) {
+			user.setIpAddress( request.getRemoteAddr() );
+		}
 		int id = UsersDataAccess.insertNew(user);
 		user.setId(id);
 		return Response.status(Response.Status.CREATED)
