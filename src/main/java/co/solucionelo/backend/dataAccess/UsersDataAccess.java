@@ -89,6 +89,7 @@ public class UsersDataAccess {
 			connection = DataServiceHelper.getInstance().getConnection();
 			Statement stmt = connection.createStatement();
 			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + user.getIpAddress() + "','" + "'" + user.getIdType() + "','" + user.getIdNumber() + "','" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getPhoneNumber() + "','" + user.getMobileNumber() + "','" + user.getEmail() + "','" + user.getCity() + "'" );
+			System.out.println(sql);
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
