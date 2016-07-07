@@ -15,6 +15,7 @@ public class UsersDataAccess {
 	private static final String LIST_USERS_SQL = "SELECT * FROM tblUsers";
 	private static final String LIST_SERVICES_BY_USER_ID_SQL = "SELECT * FROM tblServicesByUser WHERE userId = ";
 	private static final String INSERT_USER_SQL = "INSERT INTO tblUsers (registeredDate, ipAddress, idType, idNumber, firstName, lastName, phone, mobile, email, city) VALUES ({{values}}) RETURNING id";
+	private static final String INSERT_SERVICES_BY_USER_SQL = "INSERT INTO tblServicesByUser (userId, serviceId) VALUES ({{values}}) RETURNING id";
 	
 	public static List<UserInfo> listAll() throws URISyntaxException, SQLException {
 		List<UserInfo> list = new ArrayList<UserInfo>();
@@ -93,7 +94,11 @@ public class UsersDataAccess {
 			
 			while (rs.next()) {
 				id = rs.getInt("id");
+				user.setId(id);
 			}
+			
+			insertServices(user, connection);
+			
 		} finally {
 			if (connection != null)
 				try {
@@ -102,5 +107,19 @@ public class UsersDataAccess {
 				}
 		}
 		return id;
+	}	
+
+	private static void insertServices(UserInfo user, Connection connection) throws URISyntaxException, SQLException {
+
+		int id = 0;
+		Statement stmt = connection.createStatement();
+		for (Service service : user.getOfferedServices()) {
+			String sql = INSERT_SERVICES_BY_USER_SQL.replace("{{values}}", "'" + user.getId() + "','" + service.getId() + "'" );
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while (rs.next()) {
+				id = rs.getInt("id");
+			}
+		}
 	}	
 }
