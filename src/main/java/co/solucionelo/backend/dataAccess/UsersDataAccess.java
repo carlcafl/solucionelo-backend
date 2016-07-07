@@ -89,7 +89,7 @@ public class UsersDataAccess {
 		try {
 			connection = DataServiceHelper.getInstance().getConnection();
 			Statement stmt = connection.createStatement();
-			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + user.getIpAddress() + "','" + user.getIdType() + "','" + user.getIdNumber() + "','" + user.getFirstName() + "','" + user.getLastName() + "','" + user.getPhoneNumber() + "','" + user.getMobileNumber() + "','" + user.getEmail() + "','" + user.getCity() + "'" );
+			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + (user.getIpAddress()==null?"":user.getIpAddress()) + "','" + (user.getIdType()==null?:"":user.getIdType()) + "','" + (user.getIdNumber()==null?"":user.getIdNumber()) + "','" + (user.getFirstName()==null?"":user.getFirstName()) + "','" + (user.getLastName()==null?"":user.getLastName()) + "','" + (user.getPhoneNumber()==null?"":user.getPhoneNumber()) + "','" + (user.getMobileNumber()==null?"":user.getMobileNumber()) + "','" + (user.getEmail()==null?"":user.getEmail()) + "','" + (user.getCity()==null?"":user.getCity()) + "'" );
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
