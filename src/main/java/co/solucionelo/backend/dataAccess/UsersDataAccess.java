@@ -14,7 +14,7 @@ import co.solucionelo.backend.model.UserInfo;
 public class UsersDataAccess {
 	private static final String LIST_USERS_SQL = "SELECT * FROM tblUsers";
 	private static final String LIST_SERVICES_BY_USER_ID_SQL = "SELECT * FROM tblServicesByUser WHERE userId = ";
-	private static final String INSERT_USER_SQL = "INSERT INTO tblUsers (registeredDate, ipAddress, idType, idNumber, firstName, lastName, phone, mobile, email, city) VALUES ({{values}}) RETURNING id";
+	private static final String INSERT_USER_SQL = "INSERT INTO tblUsers (registeredDate, ipAddress, idType, idNumber, firstName, lastName, phone, mobile, email, referrer) VALUES ({{values}}) RETURNING id";
 	private static final String INSERT_SERVICES_BY_USER_SQL = "INSERT INTO tblServicesByUser (userId, serviceId) VALUES ({{values}}) RETURNING id";
 	
 	public static List<UserInfo> listAll() throws URISyntaxException, SQLException {
