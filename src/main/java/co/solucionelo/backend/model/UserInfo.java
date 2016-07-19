@@ -14,7 +14,7 @@ public class UserInfo {
 	private String phoneNumber = null;
 	private String mobileNumber = null;
 	private String email = null;
-	private String city = null;
+	private String referrer = null;
 	private List<Service> offeredServices = new ArrayList<Service>();
 	private Date registeredDate = null;
 	private String ipAddress = null;
@@ -61,11 +61,11 @@ public class UserInfo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCity() {
-		return city;
+	public String getReferrer() {
+		return referrer;
 	}
-	public void setCity(String city) {
-		this.city = city;
+	public void setReferrer(String referrer) {
+		this.referrer = referrer;
 	}
 	public List<Service> getOfferedServices() {
 		return offeredServices;

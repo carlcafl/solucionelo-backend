@@ -35,7 +35,7 @@ public class UsersDataAccess {
 				user.setEmail(rs.getString("email"));
 				user.setPhoneNumber(rs.getString("phone"));
 				user.setMobileNumber(rs.getString("mobile"));
-				user.setCity(rs.getString("city"));
+				user.setReferrer(rs.getString("referrer"));
 				user.setIpAddress(rs.getString("ipAddress"));
 				user.setRegisteredDate(rs.getDate("registeredDate"));
 				user.setOfferedServices(getByUserId(rs.getInt("id"), connection));
@@ -89,7 +89,7 @@ public class UsersDataAccess {
 		try {
 			connection = DataServiceHelper.getInstance().getConnection();
 			Statement stmt = connection.createStatement();
-			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + (user.getIpAddress()==null?"":user.getIpAddress()) + "','" + (user.getIdType()==null?"":user.getIdType()) + "','" + (user.getIdNumber()==null?"":user.getIdNumber()) + "','" + (user.getFirstName()==null?"":user.getFirstName()) + "','" + (user.getLastName()==null?"":user.getLastName()) + "','" + (user.getPhoneNumber()==null?"":user.getPhoneNumber()) + "','" + (user.getMobileNumber()==null?"":user.getMobileNumber()) + "','" + (user.getEmail()==null?"":user.getEmail()) + "','" + (user.getCity()==null?"":user.getCity()) + "'" );
+			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + (user.getIpAddress()==null?"":user.getIpAddress()) + "','" + (user.getIdType()==null?"":user.getIdType()) + "','" + (user.getIdNumber()==null?"":user.getIdNumber()) + "','" + (user.getFirstName()==null?"":user.getFirstName()) + "','" + (user.getLastName()==null?"":user.getLastName()) + "','" + (user.getPhoneNumber()==null?"":user.getPhoneNumber()) + "','" + (user.getMobileNumber()==null?"":user.getMobileNumber()) + "','" + (user.getEmail()==null?"":user.getEmail()) + "','" + (user.getReferrer()==null?"":user.getReferrer()) + "'" );
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {
