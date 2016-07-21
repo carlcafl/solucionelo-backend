@@ -15,6 +15,7 @@ public class UserInfo {
 	private String mobileNumber = null;
 	private String email = null;
 	private String referrer = null;
+	private String otherServices = null;
 	private List<Service> offeredServices = new ArrayList<Service>();
 	private Date registeredDate = null;
 	private String ipAddress = null;
@@ -90,5 +91,11 @@ public class UserInfo {
 	}
 	public void setIpAddress(String ipAddress) {
 		this.ipAddress = ipAddress;
+	}
+	public String getOtherServices() {
+		return otherServices;
+	}
+	public void setOtherServices(String otherServices) {
+		this.otherServices = otherServices;
 	}
 }
