@@ -14,7 +14,7 @@ import co.solucionelo.backend.model.UserInfo;
 public class UsersDataAccess {
 	private static final String LIST_USERS_SQL = "SELECT * FROM tblUsers";
 	private static final String LIST_SERVICES_BY_USER_ID_SQL = "SELECT * FROM tblServicesByUser WHERE userId = ";
-	private static final String INSERT_USER_SQL = "INSERT INTO tblUsers (registeredDate, ipAddress, idType, idNumber, firstName, lastName, phone, mobile, email, referrer, otherServices) VALUES ({{values}}) RETURNING id";
+	private static final String INSERT_USER_SQL = "INSERT INTO tblUsers (registeredDate, ipAddress, idType, idNumber, firstName, lastName, phone, mobile, email, referrer, otherServices, ARLAffiliated, hasBankAccount, age) VALUES ({{values}}) RETURNING id";
 	private static final String INSERT_SERVICES_BY_USER_SQL = "INSERT INTO tblServicesByUser (userId, serviceId) VALUES ({{values}}) RETURNING id";
 	
 	public static List<UserInfo> listAll() throws URISyntaxException, SQLException {
@@ -39,6 +39,9 @@ public class UsersDataAccess {
 				user.setIpAddress(rs.getString("ipAddress"));
 				user.setRegisteredDate(rs.getDate("registeredDate"));
 				user.setOtherServices(rs.getString("otherServices"));
+				user.setARLAffiliated( rs.getBoolean("ARLAffiliated") );
+				user.setBankAccount( rs.getBoolean("hasBankAccount") );
+				user.setAge( rs.getInt( "age" ) );
 				user.setOfferedServices(getByUserId(rs.getInt("id"), connection));
 				
 				list.add(user);
@@ -90,7 +93,47 @@ public class UsersDataAccess {
 		try {
 			connection = DataServiceHelper.getInstance().getConnection();
 			Statement stmt = connection.createStatement();
-			String sql = INSERT_USER_SQL.replace("{{values}}", "now(), " + "'" + (user.getIpAddress()==null?"":user.getIpAddress()) + "','" + (user.getIdType()==null?"":user.getIdType()) + "','" + (user.getIdNumber()==null?"":user.getIdNumber()) + "','" + (user.getFirstName()==null?"":user.getFirstName()) + "','" + (user.getLastName()==null?"":user.getLastName()) + "','" + (user.getPhoneNumber()==null?"":user.getPhoneNumber()) + "','" + (user.getMobileNumber()==null?"":user.getMobileNumber()) + "','" + (user.getEmail()==null?"":user.getEmail()) + "','" + (user.getReferrer()==null?"":user.getReferrer()) +  "','" + (user.getOtherServices()==null?"":user.getOtherServices()) + "'" );
+			String sql = INSERT_USER_SQL
+					.replace(
+							"{{values}}",
+							"now(), "
+									+ "'"
+									+ (user.getIpAddress() == null ? "" : user
+											.getIpAddress())
+									+ "','"
+									+ (user.getIdType() == null ? "" : user
+											.getIdType())
+									+ "','"
+									+ (user.getIdNumber() == null ? "" : user
+											.getIdNumber())
+									+ "','"
+									+ (user.getFirstName() == null ? "" : user
+											.getFirstName())
+									+ "','"
+									+ (user.getLastName() == null ? "" : user
+											.getLastName())
+									+ "','"
+									+ (user.getPhoneNumber() == null ? ""
+											: user.getPhoneNumber())
+									+ "','"
+									+ (user.getMobileNumber() == null ? ""
+											: user.getMobileNumber())
+									+ "','"
+									+ (user.getEmail() == null ? "" : user
+											.getEmail())
+									+ "','"
+									+ (user.getReferrer() == null ? "" : user
+											.getReferrer())
+									+ "','"
+									+ (user.getOtherServices() == null ? ""
+											: user.getOtherServices())
+									+ "','"
+									+ (user.isARLAffiliated())
+									+ "','"
+									+ (user.hasBankAccount())
+									+ "','"
+									+ (user.getAge())
+									);
 			ResultSet rs = stmt.executeQuery(sql);
 			
 			while (rs.next()) {

@@ -19,6 +19,9 @@ public class UserInfo {
 	private List<Service> offeredServices = new ArrayList<Service>();
 	private Date registeredDate = null;
 	private String ipAddress = null;
+	private boolean ARLAffiliated = false;
+	private boolean bankAccount = false;
+	private int age = 0;
 	
 	public String getIdType() {
 		return idType;
@@ -97,5 +100,23 @@ public class UserInfo {
 	}
 	public void setOtherServices(String otherServices) {
 		this.otherServices = otherServices;
+	}
+	public boolean isARLAffiliated() {
+		return ARLAffiliated;
+	}
+	public void setARLAffiliated(boolean aRLAffiliated) {
+		ARLAffiliated = aRLAffiliated;
+	}
+	public boolean hasBankAccount() {
+		return bankAccount;
+	}
+	public void setBankAccount(boolean bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+	public int getAge() {
+		return age;
+	}
+	public void setAge(int age) {
+		this.age = age;
 	}
 }
