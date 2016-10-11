@@ -24,7 +24,10 @@ public class RESTUsers extends RESTService {
 	@Path("/")
 	public Response doOptions() {
 		processResponse();
-		return Response.ok().build();
+		return Response.ok()
+				.header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS")
+				.header("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With").build();
 	}
 
 	@GET
