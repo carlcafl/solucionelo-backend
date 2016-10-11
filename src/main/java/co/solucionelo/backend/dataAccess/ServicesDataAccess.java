@@ -13,7 +13,7 @@ import co.solucionelo.backend.model.Service;
 public class ServicesDataAccess {
 
 	private static final String LIST_SERVICES_SQL = "SELECT * FROM tblServices ORDER BY name";
-	private static final String GET_SERVICE_BY_ID_SQL = "SELECT * FROM tblProjects WHERE id = ";
+	private static final String GET_SERVICE_BY_ID_SQL = "SELECT * FROM tblServices WHERE id = ";
 	
 	public static List<Service> listAll() throws URISyntaxException, SQLException {
 		List<Service> list = new ArrayList<Service>();
