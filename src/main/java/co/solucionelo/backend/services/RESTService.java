@@ -16,7 +16,7 @@ public abstract class RESTService {
         if(null != reqHead && !reqHead.equals(""))
         	response.addHeader("Access-Control-Allow-Headers", reqHead);
         else
-        	response.addHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+        	response.addHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods",
 				"GET, POST, PUT, DELETE, OPTIONS, HEAD");
