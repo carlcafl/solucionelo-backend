@@ -23,11 +23,8 @@ public class RESTUsers extends RESTService {
 	@OPTIONS
 	@Path("/")
 	public Response doOptions() {
-		//processResponse();
+		processResponse();
 		return Response.ok()
-				.header("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
-				.header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Methods", "POST, GET, PUT, UPDATE, OPTIONS")
 				.build();
 	}
 
