@@ -13,9 +13,10 @@ public abstract class RESTService {
 
 	protected void processResponse() {
 		String reqHead = request.getHeader("Access-Control-Request-Headers");		 
-        if(null != reqHead && !reqHead.equals("")){
+        if(null != reqHead && !reqHead.equals(""))
         	response.addHeader("Access-Control-Allow-Headers", reqHead);
-        }
+        else
+        	response.addHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
 		response.addHeader("Access-Control-Allow-Origin", "*");
 		response.addHeader("Access-Control-Allow-Methods",
 				"GET, POST, PUT, DELETE, OPTIONS, HEAD");
