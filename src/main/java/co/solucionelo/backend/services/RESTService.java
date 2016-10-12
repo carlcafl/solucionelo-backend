@@ -12,13 +12,6 @@ public abstract class RESTService {
 	protected HttpServletRequest  request;
 
 	protected void processResponse() {
-		/*String reqHead = request.getHeader("Access-Control-Request-Headers");		 
-        if(null != reqHead && !reqHead.equals(""))
-        	response.addHeader("Access-Control-Allow-Headers", reqHead + ", X-Requested-With, Access-Control-Allow-Origin");
-        else
-        	response.addHeader("Access-Control-Allow-Headers", "Origin, Content-Type, X-Requested-With, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Authorization, X-Auth-Token, Accept, Key");
-		response.addHeader("Access-Control-Allow-Origin", "*");
-		response.addHeader("Access-Control-Allow-Methods",
-				"GET, POST, PUT, DELETE, OPTIONS, HEAD");*/		
+		//Procesar? Ya lo hace el filtro
 	}
 }

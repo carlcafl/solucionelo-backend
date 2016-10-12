@@ -39,7 +39,7 @@ public class UsersDataAccess {
 				user.setIpAddress(rs.getString("ipAddress"));
 				user.setRegisteredDate(rs.getDate("registeredDate"));
 				user.setOtherServices(rs.getString("otherServices"));
-				user.setARLAffiliated( rs.getBoolean("ARLAffiliated") );
+				user.setArlAffiliated( rs.getBoolean("ARLAffiliated") );
 				user.setBankAccount( rs.getBoolean("hasBankAccount") );
 				user.setAge( rs.getInt( "age" ) );
 				user.setOfferedServices(getByUserId(rs.getInt("id"), connection));
@@ -128,10 +128,10 @@ public class UsersDataAccess {
 									+ (user.getOtherServices() == null ? ""
 											: user.getOtherServices())
 									+ "','"
-									+ (user.isARLAffiliated())
+									+ (user.isArlAffiliated())
 									+ "','"
 									+ (user.hasBankAccount())
-									+ "','"
+									+ "',"
 									+ (user.getAge())
 									);
 			ResultSet rs = stmt.executeQuery(sql);

@@ -19,7 +19,7 @@ public class UserInfo {
 	private List<Service> offeredServices = new ArrayList<Service>();
 	private Date registeredDate = null;
 	private String ipAddress = null;
-	private boolean ARLAffiliated = false;
+	private boolean arlAffiliated = false;
 	private boolean bankAccount = false;
 	private int age = 0;
 	
@@ -101,11 +101,11 @@ public class UserInfo {
 	public void setOtherServices(String otherServices) {
 		this.otherServices = otherServices;
 	}
-	public boolean isARLAffiliated() {
-		return ARLAffiliated;
+	public boolean isArlAffiliated() {
+		return arlAffiliated;
 	}
-	public void setARLAffiliated(boolean aRLAffiliated) {
-		ARLAffiliated = aRLAffiliated;
+	public void setArlAffiliated(boolean arlAffiliated) {
+		this.arlAffiliated = arlAffiliated;
 	}
 	public boolean hasBankAccount() {
 		return bankAccount;
