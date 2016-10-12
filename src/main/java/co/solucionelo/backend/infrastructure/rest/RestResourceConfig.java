@@ -12,6 +12,7 @@ public class RestResourceConfig extends ResourceConfig {
 	{
 		packages("co.solucionelo.backend.services,co.solucionelo.backend.services.util");
 		register(JacksonFeature.class);
+		register(new CORSFilter());
 		register(org.glassfish.jersey.server.mvc.jsp.JspMvcFeature.class);
 	}
 }
